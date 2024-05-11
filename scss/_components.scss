@@ -106,7 +106,7 @@
 
     #resultado {
       display: none;
-      @include messagePanel();
+      @include messagePanel;
     }
     .sucesso{
       background-color: $sucesso;
@@ -132,7 +132,7 @@
   font-size: 1.2em;
 }
 
-@mixin messagePanel($color: $cinza-claro) {
+@mixin messagePanel {
   flex: 1;
   padding: 10px;
   border-radius: 5px;
