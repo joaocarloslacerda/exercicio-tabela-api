@@ -1,4 +1,7 @@
 import "./scss/cliente.scss"
+import { filtrarLivros } from "./filtrar"
+import { adicionarLivrosNaTabela } from "./tela"
+import { buscarTodosOsLivros } from "./apiLivros"
 
 console.log("Iniciando contexto global: Página de cliente...")
 
@@ -21,7 +24,7 @@ iniciar() // Contexto global executando função iniciar ao entrar na tela
 
 async function iniciar() {
     
-    const livrosRetornados = await apiLivros_BuscarTodosOsLivros()
+    const livrosRetornados = await buscarTodosOsLivros()
 
     livrosRetornados.forEach(element => {
         let title = element.title;
@@ -30,42 +33,14 @@ async function iniciar() {
         livros.push([title, description]);
     });
 
-    tela_AdicionarLivrosNaTabela(livros)
-}
-
-async function apiLivros_BuscarTodosOsLivros() {
-    const url = ("https://api-aula.up.railway.app/livros");
-
-    const retornoGetLivros = await fetch(url)
-    const livrosJson = retornoGetLivros.json()
-    return livrosJson
-}
-
-function tela_AdicionarLivrosNaTabela(livros) {
-    // Construir tbody com os livros
-    livros.forEach(element => {
-        let tbody = document.getElementById("livros");
-
-        let tr = document.createElement("tr");
-        let tdTitulo = document.createElement("td");
-        let tdDescricao = document.createElement("td");
-
-        tdTitulo.textContent = element[0];
-        tdDescricao.textContent = element[1];
-
-        tr.appendChild(tdTitulo);
-        tr.appendChild(tdDescricao);
-
-        tbody.appendChild(tr);
-
-    });
+    adicionarLivrosNaTabela(livros)
 }
 
 function iniciarFiltrarLivros() {
     // Buscar valor da tela
-    const dadoBusca = document.getElementById("busca").value
-    // filtrarLivros(livros, valorDeBusca)
-    // adicionarLivrosNaTabela(livrosFiltrados)
+    const valorDeBusca = document.getElementById("busca").value
+    const livrosFiltrados = filtrarLivros(livros, valorDeBusca)
+    adicionarLivrosNaTabela(livrosFiltrados)
 }
 
 /* Testar função abaixo exemplo (

@@ -1,5 +1,9 @@
-export function requisicaoGet(){
+export async function buscarTodosOsLivros() {
+    const url = "https://api-aula.up.railway.app/livros";
 
+    const retornoGetLivros = await fetch(url)
+    const livrosJson = retornoGetLivros.json()
+    return livrosJson
 }
 
 export async function requisicaoPost(url, body){
