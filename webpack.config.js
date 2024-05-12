@@ -15,8 +15,8 @@ module.exports = {
         ignored: './node_modules',
     },
     entry: { // Arquivos JS que o webpack vai disponibilizar como "chunks" (partes) do "bundle" (pacote)
-        index: path.resolve(__dirname, '../javascript', 'index.js'),
-        cliente: path.resolve(__dirname, '../javascript', 'cliente.js')
+        index: path.resolve(__dirname, './javascript/', 'index.js'),
+        cliente: path.resolve(__dirname, './javascript/', 'cliente.js')
     },
     output: { // Pasta e arquivo que será enviada a compilação do seu projeto em uma build
         filename: '[name]-[fullhash].js',

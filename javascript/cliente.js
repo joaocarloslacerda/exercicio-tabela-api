@@ -1,4 +1,4 @@
-import "./scss/cliente.scss"
+import "../scss/cliente.scss"
 import { filtrarLivros } from "./filtrar"
 import { adicionarLivrosNaTabela } from "./tela"
 import { buscarTodosOsLivros } from "./apiLivros"
