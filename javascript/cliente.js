@@ -39,6 +39,7 @@ async function iniciar() {
 function iniciarFiltrarLivros() {
     // Buscar valor da tela
     const valorDeBusca = document.getElementById("busca").value
+
     const livrosFiltrados = filtrarLivros(livros, valorDeBusca)
     adicionarLivrosNaTabela(livrosFiltrados)
 }
