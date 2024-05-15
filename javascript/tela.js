@@ -19,21 +19,17 @@ export async function executaCadastro(){
 
 export function adicionarLivrosNaTabela(livros) {
     // Construir tbody com os livros
-    let tbody = document.getElementById("livros");
+    const tbody = document.getElementById("livros");
+    let linhas = "";
 
-    tbody.innerHTML = '';
-
-    livros.forEach(element => {
-        let tr = document.createElement("tr");
-        let tdTitulo = document.createElement("td");
-        let tdDescricao = document.createElement("td");
-
-        tdTitulo.textContent = element[0];
-        tdDescricao.textContent = element[1];
-
-        tr.appendChild(tdTitulo);
-        tr.appendChild(tdDescricao);
-
-        tbody.appendChild(tr);
+    livros.forEach(livro => {
+        linhas += `
+            <tr>
+                <td>${livro.title}</td>
+                <td>${livro.description}</td>                
+            </tr>
+        `
     });
+
+    tbody.innerHTML = linhas;
 }
